@@ -1,0 +1,4 @@
+# javascript-notes
+
+## content
+> Arrays
