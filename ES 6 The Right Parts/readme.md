@@ -3,15 +3,10 @@
 	The frontend masters
 	by Kyle Simpson @getify
 
-Language is rapidly evolving.
-Opinionated matter guide
-Code is not about instructing computer but communicating with human beings
-More primary jobs are aimed at maintaining code ( Legacy code )
-Readability mostly dependent upon familiarity.
-Automated code readability
-Imperative(how to do something) vs Declarative(what the output should be) Coding
-ES6 - Adding more declarative forms (mostly a better way to communicate)
-It's not the case that _ is new _ ( like arrow is the new function )
+Javascript is rapidly evolving. Many people have differrent opiniated patterns, so this is just a opiniated guide.
+Code is not about instructing computer but communicating with human beings. More primary jobs are aimed at maintaining code ( Legacy code ). Readability mostly dependent upon familiarity. Read about [Automated code readability] (https://web.eecs.umich.edu/~weimerw/p/weimer-tse2010-readability-preprint.pdf). Imperative(how to do something) vs Declarative(what the output should be) Coding.
+	ES6 - Adding more declarative forms (mostly a better way to communicate)
+	It's not the case that _ is new _ ( like arrow is the new function )
 
 ### Arrow Functions
 nice short concise syntactic form, really?
