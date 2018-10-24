@@ -3,7 +3,7 @@
 # ES 6 The right Parts
 	The frontend masters
 	by Kyle Simpson @getify
-	Brief notes summary by [jinkya](https://github.com/jinkya)
+	Brief notes summary by jinkya
 
 Javascript is rapidly evolving. Many people have differrent opiniated patterns, so this is just a opiniated guide. Code is not about instructing computer but communicating with human beings. More primary jobs are aimed at maintaining code ( Legacy code ). Readability mostly dependent upon familiarity. Read about [Automated code readability](https://web.eecs.umich.edu/~weimerw/p/weimer-tse2010-readability-preprint.pdf). 
 - Imperative(how to do something) vs Declarative(what the output should be) Coding.
@@ -78,9 +78,14 @@ to
 		}
 	};
 
+- .call, apply or bind will not work in case of arrow function.
+- You are not gonna able to replace all the functions with arrows.
 
 
 ### BlockScope
+
+let vs var
+
 ### Default values and the Gather/Spread Operator
 ### Destructuring
 ### Template Strings
