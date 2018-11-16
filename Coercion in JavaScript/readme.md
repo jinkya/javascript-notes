@@ -134,10 +134,231 @@ ES6 : Object.is() ( But don't use it instead of === )
 	typeof baz;       // "Number"
 
 #### Natives
+No perfect terminology
+Native Types/ Native Objects ?
+Natives are functions in addition to objects 
+Native constructors? new String(), new Object()
 
+Specifications doesn't apply to browser dev consoles!!!
+Different browsers show different outputs!!!
+Lot's of confusion.
+An object wrapper has been constructed and wrapped around the primitive values by the browsers.
+
+	var foo = new String("foo");   // String {"foo"}
+	typeof foo;                    // object
+	foo instanceof String          // true
+	foo instanceof string          // nonsense!!! its an indenifier
+
+	foo = String("foo");		// foo
+	typeof foo;					// string
+
+	foo = new Number(37);		// Number { 37 }
+	typeof foo;					// object
+
+	var foo = new Boolean(false)   // Boolean {false}
+	if foo console.log("called");  // called		 
+Try to avoid new.
+
+String Number Boolean should be used for coercion.
+
+	var foo;
+	foo = new Array(1,2,3);  // new Aray(42)
+	foo = [1,2,3];
+
+	foo = new Object();
+	foo.a = 1;
+	foo.b = 2;
+	foo.c = 3;
+
+	foo = { a:1, b:2, c:3 };
+
+
+	var foo;
+	foo = new RegExp("a*b","g"); // Dynamic reg exp
+	foo = /a*b/g; // Static reg exp (prefer this as its staic)
+	foo = new Date();
+
+---
 ### Coercion
-#### 
+Abstract Operations  
+Conversion of one type to another. 
 
+#### ToString Method
+toString()
+		
+	null       "null"
+	undefined  "undefined"
+	true       "true"
+	false      "false"
+	3.1415     "3.1415"
+	0          "0"
+	-0         "0"    // a bit anomaly
+
+// a lot anomaly - broken by design
+	
+	[]                 ""
+	[1,2,3]            "1,2,3"
+	[null,undefined]   ","
+	[[[],[],[]],[]]    ",,,"
+	[,,,,]             ",,," // trailing comma ignored
+
+	{}     "[object Object]"
+	{a:2}  "[object Object]"
+
+#### ToNumber Method
+	""        0 // Root of all coercion evil in JS
+	"0"       0
+	"-0"     -0
+	" 009 "   9
+	"3.1415"  3.1415
+	"0."      0
+	".0"      0
+	"."       NaN
+	"0xaf"    175 
+
+	false      0
+	true       1
+	null       0
+	undefined  NaN
+
+ToNumber(object) => ToPrimitive(number) (hints) valueOf(), toString() => NaN
+
+	[""]           0
+	["0"]          0
+	["-0"]        -0
+	[null]         0
+	[undefined]    0
+	[1,2,3]        NaN
+	[[[[]]]]       0
+
+#### ToBoolean Method
+ToBoolean abstract operation 
+Specifications doesn't define falsy/ truthy.
+
+	Falsy            Truthy
+	""               whats not of left ;) really
+	0,+0,-0			 "foo"
+	null             23
+	NaN              []
+	false            true
+	undefined        function(){...}
+
+
+---
 ### Implicit vs Explicit Coercion
-#### 
+Explicit - it's obvious from the code that you're doing it. ( Explicit Coercion or Explicit type Conversion )
 
+Implicit - Happens as a side effect of some other operation. Evil? not evil but quite uselful
+
+#### Explicit coercion: Strings and numbers
+string <---> number  
+
+var foo = "123";
+var baz = parseInt(foo,10); // base 10 no system
+// Coercion and parsing are different.
+baz;               // 123
+
+baz = Number(foo);
+baz;              // 123
+
+baz = +foo;       // explicit? unary opeator form coerce anything to number (debatable point)
+baz;              // 123
+
+baz = 456;
+foo = baz.toSting();
+foo;                  // "456"
+// boxing primitive value in js object wrapper form.
+// subtle implicit coercion
+// Implicit Boxing mechanism
+
+foo = String(baz);
+foo;                  // "456"
+
+Most preferable forms are String() and Number()
+
+
+#### Explicit coercion: Booleans
+var foo = "123";
+var baz = Boolean(foo);   // Explicit
+baz;					// true
+
+baz = !!foo;
+baz;					// true
+
+// explicitly implicit!
+baz = foo? true : false;  // idioms coming from java
+baz					      // true
+
+side note
+var now = +(new Date());
+// now = Date.now();   // ES5 only! a preferable option
+-----
+sentinel values - values otherwise have no special value but we assign a special meaning to it.
+var foo = "foo";
+// ~N -> -(N+1)
+if (~foo.inedxOf("f")){
+	alert("Found it!");
+}
+
+Leaky abstraction coding like
+indexOf returning -1.
+
+-----
+var now1 = new Date(); // "object" Fri Nov 16 2018 16:18:38 GMT+0530 (India Standard Time)
+
+var now2 = Date.now(); // "number" 1542365340993
+
+Hiding abstraction is basically impoving readability of the code.
+
+
+#### Implicit Coercion: Strings and numbers
+var foo = "123";
+var baz = foo - 0;
+baz;                 // 123
+
+baz = foo - "0";
+baz;                 // 123
+
+baz = foo / 1;
+baz;                 // 123
+
+baz = 456;
+foo = baz + "";
+foo;                 // "456"
+
+foo = baz - "";
+foo;                 // 456
+
+
+#### Implicit Coercion: Booleans
+var foo = "123";
+
+if(foo) { console.log("sure"); }   //yes
+
+foo = 0;
+if(foo){ console.log("sure"); }   //no
+
+if(foo == false){ console.log("sure"); } // yes
+
+var baz = foo || "foo";
+baz;                      // "foo"
+
+#### Double-equal issues
+
+
+#### Implicit coercion: The bad parts
+
+
+#### Implicit coercion: The safe parts
+
+
+#### Double vs. triple equal
+
+
+#### Helpful implicit coercion
+
+
+#### Coercion resources and surprises
+
+
+---
