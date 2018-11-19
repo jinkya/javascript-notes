@@ -6,37 +6,35 @@
 
 ### Pure Functions
 
-Intro
-
-
-Agenda
-Side Effects
-Exercise 1
-Solution
+Intro  
+Agenda  
+Side Effects  
+Exercise 1  
+Solution  
 ***
 ### Composition and immutability
 
-Mutual composition
-Composition utility
-Immutability
-Questions
+Mutual composition  
+Composition utility  
+Immutability  
+Questions  
 
 ***
 ### Closure and Recursion
 
-Closure
-Exercise
-Solution
-Recursion
-Example
-Exercise
-Solution
+Closure  
+Exercise  
+Solution  
+Recursion  
+Example  
+Exercise  
+Solution  
 
 ***
-### List Operations
+### List Operations  
 
-List transformation
-List exclusion
-List composition
-List iteration
+List transformation  
+List exclusion  
+List composition  
+List iteration  
 ***
