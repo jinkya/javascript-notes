@@ -1,9 +1,10 @@
 ***
-Javascript Functions  
-Lynda 
-Ray Villalobos  
+## Javascript Functions  
+	Lynda 
+	Ray Villalobos Lynda Course
+	1 hour 25 min 
 ***
-Introduction
+### Introduction
 
 series of statements that are grouped together in a special package
 
@@ -21,7 +22,7 @@ Invoking the function
 
 
 ***
-Getting Started
+### Getting Started
 
 *Function declaration
 Two ways
@@ -67,7 +68,7 @@ function plus(a,b){
 }
 
 ***
-Function Invocation
+### Function Invocation
 
 *Using functions as objects
 Invoking functions as methods which are property of an object.
@@ -101,7 +102,7 @@ calc.plus(2,2);
 *
 
 ***
-Using Functions
+### Using Functions
 ***
-Conclusion
+### Conclusion
 ***
