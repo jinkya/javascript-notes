@@ -1,9 +1,10 @@
-Functional Lite Javascript
-Kyle Simpson
-Udemy
+## Functional Lite Javascript
+    Kyle Simpson
+    Udemy
 
 ***
-Pure Functions
+
+### Pure Functions
 
 Intro
 
@@ -13,7 +14,7 @@ Side Effects
 Exercise 1
 Solution
 ***
-Composition and immutability
+### Composition and immutability
 
 Mutual composition
 Composition utility
@@ -21,7 +22,7 @@ Immutability
 Questions
 
 ***
-Closure and Recursion
+### Closure and Recursion
 
 Closure
 Exercise
@@ -32,7 +33,7 @@ Exercise
 Solution
 
 ***
-List Operations
+### List Operations
 
 List transformation
 List exclusion
