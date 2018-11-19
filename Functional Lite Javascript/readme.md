@@ -1,6 +1,7 @@
 ## Functional Lite Javascript
     Kyle Simpson
-    Udemy
+    Lynda
+    3 hours 9 min
 
 ***
 
