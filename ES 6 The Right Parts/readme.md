@@ -3,6 +3,7 @@
 # ES 6 The right Parts
 	The frontend masters
 	by Kyle Simpson @getify
+	5 hours 17 min
 	Brief notes summary by jinkya
 
 Javascript is rapidly evolving. Many people have differrent opiniated patterns, so this is just a opiniated guide. Code is not about instructing computer but communicating with human beings. More primary jobs are aimed at maintaining code ( Legacy code ). Readability mostly dependent upon familiarity. Read about [Automated code readability](https://web.eecs.umich.edu/~weimerw/p/weimer-tse2010-readability-preprint.pdf). 
