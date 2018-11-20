@@ -1,3 +1,4 @@
+
 ## Coercion in JavaScript
 
     Lynda
@@ -18,21 +19,21 @@ http://YouDontKnowJS.com
 
 #### Additional Resources
 High performance js by Nichlas Zakas(a bit out of date)  
-Javascript Patterns by Stoyan Stefanov(again a bit old but rigorous look at js design patterns)  
+Javascript Patterns by Stoyan Stefanov ( again a bit old but rigorous look at js design patterns. )  
 
 MDN ( defacto documentation of js aside from specifications itself.)
+Its javascript wikipedia, exhaustive documentation of javascript. Contribute to the community by checking and updating if found errors.
 
-https://github.com/rwldrn/idiomatic.js ( coding style )
+[Coding Styles](https://github.com/rwldrn/idiomatic.js)
+[Algorithm pseudo code for better js specs understandings](http://www.ecma-international.org/ecma-262/5.1/)
 
-http://www.ecma-international.org/ecma-262/5.1/ ( provided algorithm pseudo ode for better unedrstanding of js specs )
-
-js is going to evolve on a regular basis( mostly yearly ) 
+javascript is going to evolve on a regular basis( mostly yearly ) 
 
 Browsers aren't waiting for specifications.
-Settles down in feature mode in the updated versions of browsers long before official specification based on proposal only.
+They settles down in feature mode in the updated versions of browsers long before official specification based on proposal only.
 Use transpilers to be backward compatible eg_ babel.js
-New specifications not only make the code easier to write but also significat;y easier to maintain.
-Don't hesitate to use the new speifications leave it for transpilers.
+New specifications not only make the code easier to write but also significantly easier to maintain.
+Don't hesitate to use the new specifications, leave backward compatibility for transpilers.
 
 #### Primitive Types
 False assumption - js have no types - Academic Debates
@@ -57,8 +58,9 @@ typeof function() { alert(e); }; // "function"
 
 typeof null    // "object"  ( problem with null )
 ( Brendan Eich himself clarified its a bug on twitter )
+![Brendan Eich Twit](https://i.stack.imgur.com/nwOBv.png)
 
-typeof the value contained by the variable !!
+typeof means type of the value contained by the variable !!
 
 undeclared and undefined are not same.
 js does not have var type but value type 
@@ -362,3 +364,4 @@ baz;                      // "foo"
 
 
 ---
+
