@@ -1,4 +1,3 @@
-
 ## Coercion in JavaScript
 
     Lynda
@@ -21,16 +20,15 @@ http://YouDontKnowJS.com
 High performance js by Nichlas Zakas(a bit out of date)  
 Javascript Patterns by Stoyan Stefanov ( again a bit old but rigorous look at js design patterns. )  
 
-MDN ( defacto documentation of js aside from specifications itself.)
-Its javascript wikipedia, exhaustive documentation of javascript. Contribute to the community by checking and updating if found errors.
+[MDN](https://mzl.la/2zud3Ve)( defacto documentation of js aside from specifications itself). MDN is javascript wikipedia, exhaustive documentation of javascript. Contribute to the community by checking and updating if found errors.
 
 [Coding Styles](https://github.com/rwldrn/idiomatic.js)
 [Algorithm pseudo code for better js specs understandings](http://www.ecma-international.org/ecma-262/5.1/)
 
-javascript is going to evolve on a regular basis( mostly yearly ) 
+javascript is going to evolve on a regular basis ( yearly ) 
 
 Browsers aren't waiting for specifications.
-They settles down in feature mode in the updated versions of browsers long before official specification based on proposal only.
+Proposed specs settles down in feature mode in the updated versions of browsers long before official specification based on proposal only.
 Use transpilers to be backward compatible eg_ babel.js
 New specifications not only make the code easier to write but also significantly easier to maintain.
 Don't hesitate to use the new specifications, leave backward compatibility for transpilers.
@@ -55,8 +53,10 @@ typeof 123;     // "number"
 typeof true;    // "boolean"
 typeof { a:1 }; // "object"
 typeof function() { alert(e); }; // "function"
-
+typeof [1,2,3]   // object
 typeof null    // "object"  ( problem with null )
+
+
 ( Brendan Eich himself clarified its a bug on twitter )
 ![Brendan Eich Twit](https://i.stack.imgur.com/nwOBv.png)
 
@@ -66,9 +66,9 @@ undeclared and undefined are not same.
 js does not have var type but value type 
 
 Why they are not removing the bugs?
-TC39 committee defined specification have browser vendors as their memeber and browsers oppose the removal as a lot of sites are utilizing the buggy features.
+TC39 committee who defines specification have browser vendors as their member and they oppose the removal as a lot of sites are utilizing the buggy features.
 web compatibility reasons.
-Browsers are at war for the market share and changing the fundamentally will break a lot ofsites.
+Browsers are at war for the market share and changing the specifications fundamentally will break a lot of sites.
 Ratio 1/1000 site breaks, reject it. ( not confirmed )
 
 typeof typeof 2 // "string"
@@ -102,7 +102,7 @@ ES utility to check NaN
 	0 === -0           // true
 	(0/-3) === (0/3)   //true
 	foo                // 0 ( in older browsers )
-Same behaviour cannot be expected from all the developer consoles.
+Same behaviour cannot be expected uniform from all the browser consoles.
 
 isNegative zero utility
 
@@ -187,7 +187,7 @@ Conversion of one type to another.
 
 #### ToString Method
 toString()
-		
+String(entity)
 	null       "null"
 	undefined  "undefined"
 	true       "true"
@@ -208,6 +208,7 @@ toString()
 	{a:2}  "[object Object]"
 
 #### ToNumber Method
+Number(entity)
 	""        0 // Root of all coercion evil in JS
 	"0"       0
 	"-0"     -0
@@ -250,7 +251,7 @@ Specifications doesn't define falsy/ truthy.
 ### Implicit vs Explicit Coercion
 Explicit - it's obvious from the code that you're doing it. ( Explicit Coercion or Explicit type Conversion )
 
-Implicit - Happens as a side effect of some other operation. Evil? not evil but quite uselful
+Implicit - Happens as a side effect of some other operation. Evil? not evil but quite useful.
 
 #### Explicit coercion: Strings and numbers
 string <---> number  
@@ -293,12 +294,13 @@ baz					      // true
 
 side note
 var now = +(new Date());
-// now = Date.now();   // ES5 only! a preferable option
+now = Date.now(); // ES 5 only a preferable option.  
+
 -----
 sentinel values - values otherwise have no special value but we assign a special meaning to it.
 var foo = "foo";
 // ~N -> -(N+1)
-if (~foo.inedxOf("f")){
+if (~foo.indexOf("f")){
 	alert("Found it!");
 }
 
@@ -310,7 +312,7 @@ var now1 = new Date(); // "object" Fri Nov 16 2018 16:18:38 GMT+0530 (India Stan
 
 var now2 = Date.now(); // "number" 1542365340993
 
-Hiding abstraction is basically impoving readability of the code.
+Hiding abstraction is basically improving readability of the code.
 
 
 #### Implicit Coercion: Strings and numbers
@@ -345,23 +347,205 @@ if(foo == false){ console.log("sure"); } // yes
 var baz = foo || "foo";
 baz;                      // "foo"
 
-#### Double-equal issues
+Take away  
+	
+	var a = "123";   
+	.  
+	var b = a || "456";     // "123"  
+	var b = a ? a : "456";  
+	.  
+	var c = a && "456";     // "456"  
+	var c = a ? "456" : a;  
 
+#### Double-equal issues
+	var foo = "123";
+	if(foo == true){
+		  alert("Not called");
+	}
+	
+	foo=[];
+	if(foo){
+		  alert("called");
+		}
+	if ( foo == false ){
+		  alert("called");
+	}
 
 #### Implicit coercion: The bad parts
+	"0" == null;         // false
+	"0" == undefined;    // false
+	"0" == false;        // true
+	"0" == NaN;          // false
+	"0" == 0;            // true
+	"0" == "";           // false
 
+	false == null;         // false
+	false == undefined;    // false
+	false == NaN;          // false
+	false == 0;            // false
+	false == "";           // false
+	false == [];           // false
+	false == {};    	   // false
+
+	"" == null;       // false
+	"" == undefined;  // false
+	"" == NaN;        // false
+	"" == 0;          // true
+	"" == [];         // true
+	"" == {};         // false
+
+	0 == null;       // false
+	0 == undefined;  // false
+	0 == NaN;        // false
+	0 == [];         // true
+	0 == {};         // false
+
+	"0"   ==  false;    //true
+	false ==  0;		//true
+	false ==  "";		//true
+	false ==  [];		//true
+	""    ==  0;		//true
+	""    ==  [];		//true
+	0     ==  [];		//true
+
+	[] == ![]           // true
+
+
+	Never use == false or == true  
+
+Ask yourself?   
+Can either value be true or false ?  
+Can either value ever be [], "", or 0 ?  
+then try to avoid.  
 
 #### Implicit coercion: The safe parts
+	42     == "43"    // false
+	"foo"  == 42      // false
+	"true" == true    // false
+	
+	42    == "42"     // true
+	"foo" == ["foo"]  // true
 
+Primitive <--> Native  
+	
+	var foo = "123";
+	foo.length;         // 3
+	
+	foo.charAt(2)       // "3"
+	
+	foo = new String("123");   
+	var baz = foo + "";
+	typeof baz;      // "string"  
+
+Any sufficiently advanced (complex/confusing) technology is indistinguishable from magic - Arthur Clark  
 
 #### Double vs. triple equal
+==  checks value   
+=== checks value and type   
+its nonsense?  
+  
+==  allows coercion  
+=== disallows coercion  
+  
+var foo = [];  
+var baz = "";  
+  
+	if(foo == baz) {
+		 alert("working!");
+	}
+	
+	if (foo === baz) {
+		  alert("not working!");
+	}
 
+	foo = 0;
+	
+	if (foo === "") {
+		  alert("working!");
+	}
+
+	if (foo === "") {
+	  alert("not working!");
+	}
+
+[Value Coercion: The bas parts](http://davidwalsh.name/fixing-coercion)
+
+	Number("")    === 0  // true
+	Number(false) === 0  // true
+	Number(true)  === 1  // true
+	Number(null)  === 0  // true
+	
+	String([])          === "" // true
+	String([null])      === "" // true
+	String([undefined]) === "" // true
+
+[check me](http://getify.github.io/coercions-grid/)
 
 #### Helpful implicit coercion
 
+	var foo = "3";
+	
+	if(foo === 3 || foo === "3"){
+	   alert("worked");
+	}
+	
+	if (foo === 3){
+	  alert("wroked");
+	}
+
+	if(typeof foo === "string"){
+	  alert("wroked");
+	}
+
+	var foo;
+	
+	if(foo == null){
+	  alert("worked");
+	}
+
+	foo = null;
+	
+	if(foo == null){
+	  alert("worked");
+	}
+
+	foo = false;
+	
+	if(foo == null){
+	  alert("didn't worked");
+	}
+
+[What about performance of == and === ?](https://jsperf.com/triple-equals-vs-double-equals/5)
+
+- If the types compared are the sam, they are identical. That is to say they use the exact same algorithm.
+- If the types are different, then performance is irrelevant. Either you need type coercion or you don't. If you don't need it, don't use == because the result you get may be unexpected.
+
+Using == in your code is dangerous, avoid it.  
+Use === where it's safer and use == where it's more helpful.  
+
+Javascript implicit coercion is a flaw in the language design. Avoid it! 
+
+Use explicit coercion where it's safer and use implicit coercion where it's more helpful. 
 
 #### Coercion resources and surprises
+http://jscoercion.qfox.nl/
+[Expired(]http://webreflection.blogpost.com/2010/10/javascript-coercion-demystified.html)
 
+	parseInt("08");     // 0  , not anymore!
+	parseInt(1/0, 19);  // 18 , not anymore!
+
+	Array(5).join("wat"-1)+" Batman!"   // "NaNNaNNaNNaN Batman!"
+	3 > 2 > 1 // false
+	1 < 2 < 3 // true
 
 ---
+##### SONGS  
+Three Birds
+No woman No cry
+Boulevard of Broken Dreams  
+Closer  
+What do you mean  
+Let me love you  
+Champion  
+Faded  
 
