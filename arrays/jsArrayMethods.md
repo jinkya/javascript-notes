@@ -1,6 +1,6 @@
 
 ## Arrays
-Array a neat way to store continuous items in memory in a single variable. 
+A neat way to store continuous items in memory in a single variable. 
 A global object that is used in the construction of arrays; which are high-level, list-like objects.   
 **typeof array = object**  
 **Declaration**  
@@ -9,13 +9,14 @@ let b = new Array();
 **Length**   
 array.length   
 Setting an initial length with Array constructor 
-let c = new Array(10) 
+let c = new Array(10) // creates array with 10 empty elements.
 
 For best performance, use only one data type in one array.   
-let projects = ["Telugu","Tamil","Marathi","Sanskrit","Hindi","Bengali"];   
+let projects = ["Marathi","Tamil","Telugu","Sanskrit","Hindi","Bengali"];   
 
 **Access array elements**  
-with index projects[0] = "Telugu"  
+with index   
+projects[0] = "Marathi";    
 
 **Adding items to array**  
 > **At the end (push)**   
@@ -39,12 +40,13 @@ with index projects[0] = "Telugu"
 > array.shift()  // removes the array first element  
 > Modifies the original array  
 
- **At the end ( pop )**  
+> **At the end ( pop )**  
 > array.pop()   // removes array last element  
 > Modifies the original array  
 
  **Getting a copy (slice)**  
-> array.slice(indexStart, numberOfElementsFromThatIndex)  
+> array.slice(indexStart, [index-1]end)  
+> negative indices also allowed.
 > Creates a new array  
 
 **Deleting desire no of elements and adding ( splice )**  
@@ -68,13 +70,13 @@ console.log(vara)   // ["ravi", "som", "mangal", "budh"]
    let merged = a.concat(b)  
    console.log(merged);    // [1,2,3,4]  
 
-**es6 spread operator**   
+>**es6 spread operator**   
 >  var a = [5,6]  
      var b = [7,8]  
      var c = [...a, ...b]  
-     console.log(c)          // [5, 6, 7, 8]  
+     console.log( c )          // [5, 6, 7, 8]  
 
-**join()**  
+>**join()**  
 > let vara = ["ravi","som","mangal"]  
 vara.join()    //  "ravi,som,mangal"  
 vara.join("-") // "ravi-som-mangal"  
@@ -91,7 +93,7 @@ vara.join("-") // "ravi-som-mangal"
 >**for in**  
 >for(x in array) { console.log(x) } // numeral and non numeral indexes  
 
-** Finding element in an array**  
+**Finding element in an array**  
 >**find** only returns the first satisfying condition element  
 >array.find((element, index, array)=> { console.log(element); return element.length > 5 })  
 
@@ -106,10 +108,20 @@ vara.map((e, i)=> { return { key: i, value: e } } ) // [ {key:0, value: "ravi"},
 >**filter**  
 >array.filter((e,i,arr)=>{ return condition })  
 
+>**map** vs **filter**
+>var animals = ['ant', 'bison', 'camel', 'duck', 'elephant'];
+>animals.map((e,i,a)=>{
+	return e.length > 3
+}) // [false, true, true, true, true]
+> animals.filter((e,i,a)=>{
+	return e.length > 3
+}) // ["bison", "camel", "duck", "elephant"]
 
 **The reduce() function**  
 >var ao = [1,2,3,4]  
 >console.log(ao.reduce((accumulator, current)=> { return accumulator+current })) // 10  
+>var a = [1,2,3,4]  
+a.reduce((a,b)=>{return a*b}) // 24  
 > [use cases](https://codeburst.io/all-about-javascript-arrays-in-1-article-39da12170b1c)  
 > [technical details](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce)  
 
@@ -117,4 +129,3 @@ vara.map((e, i)=> { return { key: i, value: e } } ) // [ {key:0, value: "ravi"},
 > let ro = [1,2,3,4,5]  
 delete ro[1]  
 console.log(ro)  // [1, empty, 3, 4, 5]  
-
