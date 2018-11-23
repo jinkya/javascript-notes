@@ -2,7 +2,7 @@
     Kyle Simpson's Lynda Course
     6 h 22 m
 
-==========================================
+--- 
 ### Parallel vs. Async 
 ----------------------
 #### Introduction
