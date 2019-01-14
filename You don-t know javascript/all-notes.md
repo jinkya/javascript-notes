@@ -503,41 +503,117 @@ Chapter 2: Intro Javascript
 		In new-generation browser, this layer may be part of JS only.
 	- IO is browser object. i.e. console.log() and alert()	
 
--------------------------------------------------------------------------------
+----------------------------------------------------------------------------
 Chapter 3: Intro YDKJS
-----------------------------------------------------------------------------------
+- Learning all parts of js not just subset like 'the good parts'.
+- Other language serious developers learns all of the language scenarios but in js case, most dev learns only the sufficient 'good parts'.
+
+- Scopes and Closures _ critical understanding of lexical scope
+- this and object prototypes _ dynamic bound of this keyword, take the red pill
+- Types and Grammar _ Hihghly controvertial topic: type coercion, a fresh perspective
+- Async and Performance _ callbacks, promises, aync, generators, webworker, asm.js, SIMD
+- ES6 and beyond _ js is never going to stop evolving, new ES6 features.
+----------------------------------------------------------------------------
 Appendix A: Thanks
-----------------------------------------------------------------------------------
+----------------------------------------------------------------------------
 
 
 .
 .
-==================================================================================
-==================================================================================
+===============================================================================
+===============================================================================
 Scope and Closures
-----------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 Foreword
-----------------------------------------------------------------------------------
-Preface 
-----------------------------------------------------------------------------------
+- Go into research mode for deep exploration
+- desire to learn.
+- Addict to 'why' question for all answers.
+-------------------------------------------------------------------------------
+Preface
+- old one. 
+-------------------------------------------------------------------------------
 Chapter 1: What is Scope?
-----------------------------------------------------------------------------------
+- Compiler Theory
+	- js is general category of dynamic or interpreted languages, but infact a compiled language (not compiled in advance)
+	- compilation process
+		1. Tokenizing/Lexing _ beraking char string into chunks called tokens
+		2. Parsing _ Turning token streams into nested element tree (Abstract SYntax Tree)
+		3. Code genration _ Converting AST into executable code
+	- The details of sys resource management by engine are much more complicated han above broad process.
+	- js engine is vastly more complex as it doesn't get the luxury of AOT compilation. In js compilation occurs in most cases, mere microseconds before the code is executed. For fastest performance js uses all sort of tricks (like JIT, lazy compile and even hot-recompile)
+
+- Understanding Scope
+	- Think process in terms of conversation (think like Engine and friends)
+		1. Engine _ start-to-finish compilation and execution of js program
+		2. Compiler _ Handles dirty work of parsing and code generation
+		3. Scope _ collect and maintains a look-up list of all declared variables and set strict rules for accessibility.
+
+		var a =2;
+		- Encountering var a, compiler asks scope if a variable a exists, if exists ignore declaration and move on. Else compiler aks scope to declare a new var a for that scope collection.
+		- Compiler then produces the code for engine for execution, to handle a=2 assignment. The engine will ask scope if a is accessible to the current scope if not search elsewhere and assign it, if a is not found engine will throw an error.
+
+	- The cast
+	- Back and Forth
+	- Compiler Speak
+	- Engine/Scope Cpnversation
+- Nested Scope
+	- Building on metaphors
+- Errors
+- Review
+-------------------------------------------------------------------------------
 Chapter 2: Lexical Scope
-----------------------------------------------------------------------------------
+- Lex time
+- Look-ups
+- Cheating Lexical
+	- eval
+	- with 
+	- performance
+- Review
+-------------------------------------------------------------------------------
 Chapter 3: Function vs Block Scope
-----------------------------------------------------------------------------------
+- Scope from functions
+- hiding in Plain Scope
+	- Collision avoidance
+		- Global "Namespaces"
+		- Module management
+- Function as scopes
+	- Anonymous vs named
+	- Invoking Function Expresion Immediately
+- Blocks as scopes
+	- with
+	- try/catch
+	- let
+	- Garbage collection
+	- let loops
+	- const
+- Review
+-------------------------------------------------------------------------------
 Chapter 4: Hoisting
-----------------------------------------------------------------------------------
+- Chicken or the Egg
+- Compiler strikes again
+- Functions first
+- Review
+-------------------------------------------------------------------------------
 Chapter 5: Scope Closures
-----------------------------------------------------------------------------------
+- Enlightment
+- Nitty Gritty
+- Now I can see
+	- CLosure
+- Loops + Closure
+	-Block scoping revisited
+- Modules
+	- Modern modules
+	- Future modules
+- Review
+-------------------------------------------------------------------------------
 Appendix A: Dynamic Scope
-----------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 Appendix B: Polyfilling Scope
-----------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 Appendix C: Lexical-this
-----------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 Appendix D: Thanks youz
-----------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 
 .
