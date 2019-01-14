@@ -421,12 +421,87 @@ Chapter 2: Intro Javascript
 		- User is a function, not a class to be instantiated, so without using new its just User().
 		- The inner doLogin function has a closure over usr and pwd, meaning it will retain their access even after the User() function finishes running.
 - this identifier
-	
+	- often this is related to 'object oriented pattern', but in JS this is a different mechanism
+	- Inside function, this usually points to an object.
+	- this does not refer to function itself (common misconception)
+		function foo(){
+			console.log(this.bar)
+		}
+		
+		var bar = "globbal";
+		
+		var obj1 = {
+			bar: "obj1",
+			foo: foo
+		}
+		
+		var obj2 = {
+			bar: "obj2"
+		}
+		
+		foo();          // "globbal"
+		obj1.foo();     // "obj1"
+		foo.call(obj2); // "obj2"
+		new foo();      // undefined
+
 - Prototypes
+	- When you reference a property on an object, if that property doesn't exist, JavaScript will automatically use that object's internal prototype reference to find another object to look for the property on.
+
+		var foo = {
+		a: 42
+		}
+		
+		var bar = Object.create(foo);
+		
+		bar.b = "hello world"
+		
+		foo; // {a:42}
+		bar; // {b:"hello world"}
+		
+		bar.b; // "hello world"
+		bar.a; // 42
+
 - Old and New
+	- Bring the newer javascript to the old browsers
+	
 	- Polyfilling 
+		- ES6 introduced Number.isNaN(...) utility for buggy isNaN(...)
+		- But its easy to polyfill this utility running on every browser
+
+			if(!Number.isNaN){	// guards against applying polyfill def in ES6 browser
+				Number.isNaN = function isNaN(x){
+					return x != x;
+				}
+			}
+		- Adhere to the specifications as strictly as possible.
+		- Use trusted polyfills by ES5 shim and ES6 shim.
+
 	- Transpiling
+		- But thiers no way to polyfill new syntax, will give error as unrecognised to old js engines.
+		- Tool for newer code to older code equivalent = transpiling = 
+		tranforming + compiling
+		- Why new if old is working
+			- New syntax desifned to make code more readable and maintanable.
+			- take advantage of browser performance optimization.
+			- Helps TC39 committee testing new features for bugs.
+			- eg
+			  ES6 adds "default parameter values"
+			  function foo(a=2){
+			  	console.log(a);
+				}
+			  in older browser it required to transpile into
+			  function foo(){
+			  	var a = argument[0] !== (void 0) : arguments[0] : 2;
+			  	console.log(a)
+			}
+		- Transpilers should be thought as JS development ecosystem and process part.
+		- Good options _ Traceur, Babel etc.
+
 - Non Javascript
+	- A good chunk of code is not directly constrolled by js like DOM API
+		var el = document.getElementByID(...)
+		In new-generation browser, this layer may be part of JS only.
+	- IO is browser object. i.e. console.log() and alert()	
 
 -------------------------------------------------------------------------------
 Chapter 3: Intro YDKJS
