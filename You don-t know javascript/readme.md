@@ -1,4 +1,7 @@
 ## You don't know javascript
+
+Below are the official ydkjs github links and brief notes are in the above folders - 
+
     Kyle Simpson
     
 - [Up and Going](https://github.com/getify/You-Dont-Know-JS/blob/master/up%20&%20going/README.md#you-dont-know-js-up--going)  
